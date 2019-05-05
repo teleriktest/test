@@ -11,16 +11,18 @@ class moni04sCircle{
         context.fillStyle = this.color;
         context.fill();
     }
-}
-var m_circles = [];
-for (let i = 0; i < 5; ++i){
-    m_circles[i] = new moni04sCircle(Math.random()*700, Math.random()*500, 10, "red");
-}
-function update(){
-
-}
-function draw(){
-    for (let i = 0; i < 5; ++i){
-        m_circles[i].draw();
+    move(){
+        if (isKeyPressed[68]){
+            this.x += 5
+        }
+        if (isKeyPressed[65]){
+            this.x -= 5
+        }
+        if (isKeyPressed[87]){
+            this.y -= 5
+        }
+        if (isKeyPressed[83]){
+            this.y += 5
+        }
     }
 }
