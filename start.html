@@ -26,7 +26,7 @@
                 return 0;
             };
 
-               
+
             function randomInteger(upTo){
                 return Math.floor(Math.random()*upTo);
             }
@@ -43,7 +43,7 @@
                 result.img.src = imageNameAndPath;
                 result.color=backupColor;
                 return result;
-            }           
+            }
             function drawImage(imageWithBackupColorObject,x,y,xs,ys){
                 try{
                     if (xs!==undefined){
@@ -51,7 +51,7 @@
                     }
                     else{
                         context.drawImage(imageWithBackupColorObject.img, x, y);
-                    } 
+                    }
                 }catch(e){
                    // console.log("Missing image file: " + imageWithBackupColorObject.img.src);
                     context.fillStyle = imageWithBackupColorObject.color;
@@ -61,6 +61,7 @@
             }
 
            </script>
+           <script src="rot_rect.js"></script>
            <script src="game.js"></script>
             <script>
             if (endlessCanvas == undefined) {
@@ -99,7 +100,7 @@
             var reqAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
                 setTimeout(callback, 1000 / 30);
             };
-            
+
             function redraw() {
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 draw(); // call progammer's draw() function
