@@ -1,0 +1,43 @@
+function dijxtra(graph, start,end) {
+    let dist = [graph.length];
+    let toVisit = [];
+    dist[start] = {dist: 0, from: -1};
+    toVisit.push(start);
+    while(toVisit.length != 0) {
+        //console.log(0);
+        //finding the "top" of the queue
+        let bestInd = 0;
+        for(let i = 0; i < toVisit.length; i ++) {
+            if(dist[toVisit[i]].dist < dist[toVisit[bestInd]].dist) { 
+                bestInd = i;
+            }
+        }
+        //swap the "top" and the last
+        let buff = toVisit[toVisit.length - 1];
+        toVisit[toVisit.length - 1] = toVisit[bestInd];
+        toVisit[bestInd] = buff;
+        
+        //save and "pop" the last
+        let current = toVisit[toVisit.length - 1];
+        toVisit.splice(toVisit.length - 1, 1);
+        if(current == end) break;
+        //go through all the neighbours and push them into the "queue"
+        for(let i = 0; i < graph[current].length; i ++) {
+            if(dist[graph[current][i].to] == undefined) {
+                let distance = dist[current].dist + graph[current][i].dist;
+                let to = graph[current][i].to;
+                toVisit.push(to);
+                dist[to] = {dist: distance,from: current}; 
+            }
+        }
+    }
+//    console.log(dist);
+    let path = [];
+    let current = end;
+    while(current != start) {
+        current = dist[current].from;
+        path.push(current);
+    }
+//    console.log(path);
+    return path;
+}
