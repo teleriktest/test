@@ -1,11 +1,13 @@
-
+var myX, myY;
 function update() {
+    myX = mouseX;
+    myY = mouseY;
 }
 function draw() {
     context.fillStyle = "blue";
     context.fillRect(100, 200, 100, 200);
     context.fillStyle = "red";
-    context.fillRect(400, 200, 100, 200);
+    context.fillRect(myX, myY, 100, 200);
 };
 function keyup(key) {
     // Show the pressed keycode in the console
