@@ -10,9 +10,13 @@ class Enemy {
 	}
 	ai() {
 		var d = dist(this.x, this.y, myX, myY);
-		var dx = (this.x - myX) * this.speed / dist;
-		var dy = (this.y - myY) * this.speed / dist;
+		var dx = (myX - this.x) * this.speed / d;
+		var dy = (myY - this.y) * this.speed / d;
 		this.x += dx;
 		this.y += dy;
+	}
+	draw() {
+		context.fillStyle = "red";
+		context.fillRect(this.x, this.y, 100, 100);
 	}
 }
